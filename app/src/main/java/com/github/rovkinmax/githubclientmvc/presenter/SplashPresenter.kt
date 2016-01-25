@@ -36,11 +36,11 @@ class SplashPresenter(private val context: Context, private val view: SplashView
         }
     }
 
-    open fun continueWithAccount() {
+    fun continueWithAccount() {
 
     }
 
-    open fun continueWithoutAccount() {
+    fun continueWithoutAccount() {
         context.startActivity(LoginActivity.buildIntent(context))
     }
 }
