@@ -10,24 +10,19 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
-import org.powermock.api.support.membermodification.MemberModifier
-import org.powermock.core.classloader.annotations.PowerMockIgnore
+import org.powermock.api.mockito.PowerMockito
 import org.powermock.core.classloader.annotations.PrepareForTest
+import org.powermock.modules.junit4.PowerMockRunner
 import org.powermock.modules.junit4.rule.PowerMockRule
-import org.robolectric.RobolectricGradleTestRunner
-import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
 
 /**
  * @author Rovkin Max
  */
-@RunWith(RobolectricGradleTestRunner::class)
-@PowerMockIgnore("org.mockito.*", "org.robolectric.*", "android.*")
-@PrepareForTest(SplashPresenter::class)
-@Config(constants = BuildConfig::class, sdk = intArrayOf(21))
+@RunWith(PowerMockRunner::class)
+@PrepareForTest(SplashPresenter::class, AccountManager::class)
 class SplashPresenterTest {
     @get:Rule
-    var rule = PowerMockRule()
+    val rule = PowerMockRule()
 
     private lateinit var context: Context
     private lateinit var presenter: SplashPresenter
@@ -36,14 +31,13 @@ class SplashPresenterTest {
 
     @Before
     fun setUp() {
-        context = RuntimeEnvironment.application
         view = Mockito.mock(SplashView::class.java)
-
+        context = Mockito.mock(Context::class.java)
         accountManager = Mockito.mock(AccountManager::class.java)
-        val tempPresenter = SplashPresenter(context, view)
-        MemberModifier.field(SplashPresenter::class.java, "accountManager").set(tempPresenter, accountManager)
-        presenter = Mockito.spy(tempPresenter)
 
+        PowerMockito.mockStatic(AccountManager::class.java)
+        Mockito.`when`(AccountManager.get(context)).thenReturn(accountManager)
+        presenter = Mockito.spy(SplashPresenter(context, view))
     }
 
     @Test

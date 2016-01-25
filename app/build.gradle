@@ -43,6 +43,10 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     configurations {
         androidTestCompile.exclude group: 'com.android.support'
     }
@@ -61,10 +65,6 @@ dependencies {
     testCompile "org.powermock:powermock-module-junit4-rule:1.6.2"
     testCompile "org.powermock:powermock-api-mockito:1.6.2"
     testCompile "org.powermock:powermock-classloading-xstream:1.6.2"
-    testCompile('org.robolectric:robolectric:3.0') {
-        exclude group: 'commons-logging', module: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
-    }
 
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

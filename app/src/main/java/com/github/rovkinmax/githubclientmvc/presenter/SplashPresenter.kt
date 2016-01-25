@@ -5,6 +5,7 @@ import android.accounts.AccountManager
 import android.content.Context
 import com.github.rovkinmax.githubclientmvc.account.AuthCallback
 import com.github.rovkinmax.githubclientmvc.account.AuthDelegate
+import com.github.rovkinmax.githubclientmvc.view.LoginActivity
 import com.github.rovkinmax.githubclientmvc.view.SplashView
 
 /**
@@ -40,6 +41,6 @@ class SplashPresenter(private val context: Context, private val view: SplashView
     }
 
     open fun continueWithoutAccount() {
-
+        context.startActivity(LoginActivity.buildIntent(context))
     }
 }
