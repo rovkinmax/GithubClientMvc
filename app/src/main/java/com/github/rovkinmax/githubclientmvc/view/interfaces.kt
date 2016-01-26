@@ -5,3 +5,11 @@ package com.github.rovkinmax.githubclientmvc.view
  */
 interface SplashView {
 }
+
+interface LoginView {
+    fun loginAllowed()
+
+    fun loginDeny()
+
+    fun showProgress()
+}

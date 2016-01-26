@@ -6,14 +6,12 @@ import android.content.Context
 import com.github.rovkinmax.githubclientmvc.BuildConfig
 import com.github.rovkinmax.githubclientmvc.view.SplashView
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.powermock.api.mockito.PowerMockito
 import org.powermock.core.classloader.annotations.PrepareForTest
 import org.powermock.modules.junit4.PowerMockRunner
-import org.powermock.modules.junit4.rule.PowerMockRule
 
 /**
  * @author Rovkin Max
@@ -21,8 +19,6 @@ import org.powermock.modules.junit4.rule.PowerMockRule
 @RunWith(PowerMockRunner::class)
 @PrepareForTest(SplashPresenter::class, AccountManager::class)
 class SplashPresenterTest {
-    @get:Rule
-    val rule = PowerMockRule()
 
     private lateinit var context: Context
     private lateinit var presenter: SplashPresenter

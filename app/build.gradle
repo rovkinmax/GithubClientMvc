@@ -24,7 +24,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "ACCOUNT_TYPE", '"ru.megafon.costcontrol.auth"'
+        buildConfigField "String", "ACCOUNT_TYPE", '"com.github.rovkinmax.githubclientmvc.auth"'
     }
 
     buildTypes {
@@ -50,6 +50,11 @@ android {
     configurations {
         androidTestCompile.exclude group: 'com.android.support'
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
@@ -59,12 +64,13 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
 
+
     testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.0.31-beta'
-    testCompile "org.powermock:powermock-module-junit4:1.6.2"
-    testCompile "org.powermock:powermock-module-junit4-rule:1.6.2"
-    testCompile "org.powermock:powermock-api-mockito:1.6.2"
-    testCompile "org.powermock:powermock-classloading-xstream:1.6.2"
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile "org.powermock:powermock-module-junit4:1.6.3"
+    testCompile "org.powermock:powermock-module-junit4-rule:1.6.3"
+    testCompile "org.powermock:powermock-api-mockito:1.6.3"
+    testCompile "org.powermock:powermock-classloading-xstream:1.6.3"
 
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
