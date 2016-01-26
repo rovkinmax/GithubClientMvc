@@ -37,7 +37,7 @@ class SplashPresenterTest {
 
         PowerMockito.mockStatic(AccountManager::class.java)
         Mockito.`when`(AccountManager.get(context)).thenReturn(accountManager)
-        presenter = Mockito.spy(SplashPresenter(context, view))
+        presenter = Mockito.spy(SplashPresenter(context))
     }
 
     @Test
