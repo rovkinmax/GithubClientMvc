@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 /**
  * @author Rovkin Max
  */
-class SplashPresenter(private val context: Context) {
+open class SplashPresenter(private val context: Context) {
     private val accountManager: AccountManager;
     private val authDelegate: AuthDelegate
     private val handler = Handler()
@@ -34,17 +34,17 @@ class SplashPresenter(private val context: Context) {
                 }
 
                 override fun onAuthFailed() {
-                    continueWithAccount()
+                    continueWithoutAccount()
                 }
             })
         }
     }
 
-    fun continueWithAccount() {
+    open fun continueWithAccount() {
         removeCallback()
     }
 
-    fun continueWithoutAccount() {
+    open fun continueWithoutAccount() {
         removeCallback()
         context.startActivity(LoginActivity.buildIntent(context))
     }

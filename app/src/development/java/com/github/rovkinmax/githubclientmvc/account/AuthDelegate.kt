@@ -16,20 +16,20 @@ class AuthDelegate(context: Context) {
         accountManager = AccountManager.get(context)
     }
 
-    fun checkAuth(account: Account?, authCallback: AuthCallback) {
-        if (account != null)
-            authCallback.onAuthSuccessful(account, "1234567890")
-        else
-            authCallback.onAuthFailed()
+    fun checkAuth(account: Account, authCallback: AuthCallback) {
+        getToken(account, Bundle.EMPTY, authCallback)
     }
 
     fun tryLogin(login: String, password: String, authCallback: AuthCallback) {
         val account = getOrCreateAccount(login, password)
         val bundle = Bundle()
         bundle.putString(AccountManager.KEY_PASSWORD, password)
+        getToken(account, bundle, authCallback)
+    }
+
+    private fun getToken(account: Account, bundle: Bundle, authCallback: AuthCallback) {
         accountManager.getAuthToken(account, account.type, bundle, false, { future ->
             try {
-                val result = future.result
                 val token: String? = future.result.getString(AccountManager.KEY_AUTHTOKEN)
                 if (!token.isNullOrBlank()) {
                     authCallback.onAuthSuccessful(account, token!!)
