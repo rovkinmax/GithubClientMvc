@@ -8,7 +8,7 @@ import java.util.*
 class RepoPresenter(val view: RepoListView) {
 
     fun dispatchError(apiError: ApiError) {
-        view.showError(apiError.message)
+        view.showError(apiError.message!!)
     }
 
     fun dispatchRepoList(repoList: ArrayList<Repo>) {
