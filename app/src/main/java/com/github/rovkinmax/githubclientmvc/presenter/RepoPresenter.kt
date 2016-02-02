@@ -14,4 +14,8 @@ class RepoPresenter(val view: RepoListView) {
     fun dispatchRepoList(repoList: ArrayList<Repo>) {
         view.updateRepoList(repoList)
     }
+
+    fun loadRepoList() {
+        view.showProgress()
+    }
 }

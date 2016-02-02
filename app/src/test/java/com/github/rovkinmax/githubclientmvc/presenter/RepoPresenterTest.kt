@@ -36,4 +36,10 @@ class RepoPresenterTest {
         presenter.dispatchError(error)
         Mockito.verify(view).showError("server error")
     }
+
+    @Test
+    fun testRefreshTest() {
+        presenter.loadRepoList()
+        Mockito.verify(view).showProgress()
+    }
 }

@@ -6,18 +6,21 @@ import java.util.*
 /**
  * @author Rovkin Max
  */
+
+interface LoadingView {
+    fun showProgress()
+    fun hideProgress()
+}
+
 interface SplashView {
 }
 
-interface LoginView {
+interface LoginView : LoadingView {
     fun loginAllowed()
-
     fun loginDeny()
-
-    fun showProgress()
 }
 
-interface RepoListView {
+interface RepoListView : LoadingView {
     fun updateRepoList(repoList: ArrayList<Repo>)
     fun showError(message: String)
 }
